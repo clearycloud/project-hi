@@ -19,12 +19,13 @@ function calculateETA(){
     let stops=[];
 
     if(stopsInput.trim()!==""){
+
         stops = stopsInput
             .split(",")
             .map(x=>parseInt(x.trim()));
     }
 
-    // ===== 실측 데이터 기반 =====
+    // ===== 실제 측정 데이터 =====
 
     const FLOOR_TIME = 4.1;
 
@@ -38,7 +39,7 @@ function calculateETA(){
 
     let current = currentFloor;
 
-    // ===== 정차 층 계산 =====
+    // ===== 중간 정차 계산 =====
 
     for(let stop of stops){
 
@@ -51,18 +52,20 @@ function calculateETA(){
         current = stop;
     }
 
-    // ===== 사용자 층까지 이동 =====
+    // ===== 사용자 층 이동 =====
 
     totalTime +=
         Math.abs(userFloor-current)
         * FLOOR_TIME;
 
-    // ===== 문 닫힘 방식 =====
+    // ===== 문 처리 =====
 
     if(doorMode==="auto"){
+
         totalTime += AUTO_DOOR;
     }
     else{
+
         totalTime += BUTTON_DOOR;
     }
 
@@ -70,7 +73,7 @@ function calculateETA(){
 
     document.getElementById("result").innerHTML=
     `
-    🚪 예상 도착 시간<br>
+    🚪 ETA<br>
     ${totalTime.toFixed(2)}초
     `;
 }
