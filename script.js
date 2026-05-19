@@ -39,7 +39,7 @@ function calculateETA(){
 
     let current = currentFloor;
 
-    // ===== 중간 정차 계산 =====
+    // ===== 중간 정차 =====
 
     for(let stop of stops){
 
@@ -52,7 +52,7 @@ function calculateETA(){
         current = stop;
     }
 
-    // ===== 사용자 층 이동 =====
+    // ===== 사용자 층 =====
 
     totalTime +=
         Math.abs(userFloor-current)
@@ -69,11 +69,10 @@ function calculateETA(){
         totalTime += BUTTON_DOOR;
     }
 
-    // ===== 결과 출력 =====
+    // ===== 결과 =====
 
     document.getElementById("result").innerHTML=
     `
-    🚪 ETA<br>
     ${totalTime.toFixed(2)}초
     `;
 }
