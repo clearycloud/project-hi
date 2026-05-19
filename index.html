@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>엘리베이터 도착 예정 시간</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚪 엘리베이터 ETA 계산기</h1>
+
+        <label>현재 엘리베이터 층</label>
+        <input type="number" id="currentFloor" placeholder="예: 3">
+
+        <label>정차 예정 층 (쉼표로 구분)</label>
+        <input type="text" id="stops" placeholder="예: 5,8">
+
+        <label>사용자 층</label>
+        <input type="number" id="userFloor" placeholder="예: 10">
+
+        <button onclick="calculateETA()">도착 시간 계산</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
