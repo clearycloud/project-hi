@@ -6,158 +6,197 @@
 
 body{
 
-    font-family:'Poppins',sans-serif;
-
-    background:#020617;
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #1e293b
+    );
 
     min-height:100vh;
 
-    overflow-x:hidden;
+    overflow:hidden;
+
+    font-family:'Poppins',sans-serif;
 
     color:white;
 }
 
-.bg-animation{
-
-    position:fixed;
-
-    width:100%;
-    height:100%;
-
-    background:
-    radial-gradient(circle at 20% 20%, #2563eb55, transparent 25%),
-    radial-gradient(circle at 80% 30%, #7c3aed55, transparent 25%),
-    radial-gradient(circle at 50% 80%, #06b6d455, transparent 25%);
-
-    animation:moveBg 10s infinite alternate;
-
-    z-index:-1;
-}
-
-@keyframes moveBg{
-
-    from{
-        transform:scale(1) translateY(0px);
-    }
-
-    to{
-        transform:scale(1.1) translateY(-20px);
-    }
-}
-
-.main-container{
+.building{
 
     width:100%;
 
-    min-height:100vh;
+    height:100vh;
 
     display:flex;
-
-    flex-direction:column;
 
     justify-content:center;
 
     align-items:center;
 
-    padding:30px;
+    gap:80px;
+
+    padding:40px;
 }
 
-.title-area{
+/* ===== 엘리베이터 샤프트 ===== */
 
-    text-align:center;
+.shaft{
 
-    margin-bottom:35px;
+    position:relative;
+
+    width:150px;
+
+    height:720px;
+
+    background:#111827;
+
+    border:6px solid #334155;
+
+    border-radius:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:20px 0;
+
+    box-shadow:
+    inset 0 0 25px rgba(255,255,255,0.05),
+    0 0 40px rgba(0,0,0,0.5);
 }
 
-.elevator-icon{
+.floor{
 
-    font-size:80px;
+    height:60px;
 
-    margin-bottom:15px;
+    border-top:1px solid rgba(255,255,255,0.1);
 
-    animation:float 2s ease-in-out infinite;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#94a3b8;
+
+    font-size:20px;
+
+    font-family:'Orbitron',sans-serif;
 }
 
-@keyframes float{
+/* ===== 엘리베이터 ===== */
+
+.elevator-car{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:18px;
+
+    width:100px;
+
+    height:70px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #cbd5e1,
+        #64748b
+    );
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:40px;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,0.25);
+
+    animation:elevatorMove 4s ease-in-out infinite alternate;
+}
+
+@keyframes elevatorMove{
 
     0%{
         transform:translateY(0px);
     }
 
-    50%{
-        transform:translateY(-10px);
-    }
-
     100%{
-        transform:translateY(0px);
+        transform:translateY(-480px);
     }
 }
 
-.title-area h1{
+/* ===== 우측 패널 ===== */
 
-    font-size:56px;
+.control-panel{
 
-    font-weight:700;
-
-    background:linear-gradient(
-        to right,
-        #60a5fa,
-        #a855f7,
-        #22d3ee
-    );
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    margin-bottom:10px;
+    width:480px;
 }
 
-.title-area p{
+.control-panel h1{
 
-    color:#cbd5e1;
+    font-size:48px;
 
-    font-size:18px;
+    font-family:'Orbitron',sans-serif;
+
+    margin-bottom:15px;
+
+    color:#e2e8f0;
+
+    text-shadow:
+    0 0 15px rgba(255,255,255,0.15);
+}
+
+.control-panel p{
+
+    color:#94a3b8;
 
     line-height:1.8;
+
+    margin-bottom:30px;
+
+    font-size:17px;
 }
 
-.glass-card{
+/* ===== 입력 패널 ===== */
 
-    width:430px;
+.panel{
 
-    background:rgba(255,255,255,0.08);
+    background:
+    rgba(255,255,255,0.06);
 
-    border:1px solid rgba(255,255,255,0.12);
+    border:
+    1px solid rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(20px);
 
     border-radius:30px;
 
     padding:35px;
 
     box-shadow:
-    0 15px 35px rgba(0,0,0,0.45);
-
-    transition:0.4s;
-}
-
-.glass-card:hover{
-
-    transform:translateY(-5px);
-}
-
-.input-group{
-
-    margin-bottom:20px;
+    0 10px 40px rgba(0,0,0,0.45);
 }
 
 label{
 
     display:block;
 
-    margin-bottom:10px;
+    margin-top:18px;
 
-    color:#dbeafe;
+    margin-bottom:8px;
+
+    color:#cbd5e1;
 
     font-weight:500;
 }
@@ -167,13 +206,13 @@ select{
 
     width:100%;
 
-    padding:15px;
+    padding:16px;
 
     border:none;
 
     border-radius:16px;
 
-    background:rgba(255,255,255,0.1);
+    background:#1e293b;
 
     color:white;
 
@@ -187,17 +226,19 @@ select{
 input:focus,
 select:focus{
 
-    background:rgba(255,255,255,0.18);
+    box-shadow:
+    0 0 20px rgba(59,130,246,0.4);
 
     transform:scale(1.02);
-
-    box-shadow:
-    0 0 15px rgba(96,165,250,0.35);
 }
+
+/* ===== 버튼 ===== */
 
 button{
 
     width:100%;
+
+    margin-top:30px;
 
     padding:18px;
 
@@ -205,17 +246,18 @@ button{
 
     border-radius:18px;
 
-    background:linear-gradient(
+    background:
+    linear-gradient(
         135deg,
         #3b82f6,
-        #8b5cf6
+        #06b6d4
     );
 
     color:white;
 
-    font-size:18px;
+    font-size:20px;
 
-    font-weight:600;
+    font-weight:bold;
 
     cursor:pointer;
 
@@ -227,52 +269,62 @@ button:hover{
     transform:translateY(-3px);
 
     box-shadow:
-    0 12px 25px rgba(59,130,246,0.4);
+    0 15px 30px rgba(59,130,246,0.35);
 }
 
-.result-card{
+/* ===== 결과 ===== */
 
-    width:430px;
+.result-box{
 
     margin-top:25px;
 
+    background:
+    rgba(255,255,255,0.06);
+
+    border-radius:24px;
+
     padding:28px;
-
-    border-radius:28px;
-
-    background:rgba(255,255,255,0.08);
-
-    border:1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter:blur(18px);
 
     text-align:center;
 
+    border:
+    1px solid rgba(255,255,255,0.08);
+
     box-shadow:
-    0 15px 35px rgba(0,0,0,0.45);
+    0 10px 40px rgba(0,0,0,0.45);
 }
 
 #result{
 
-    font-size:30px;
+    font-size:34px;
 
-    font-weight:700;
+    font-family:'Orbitron',sans-serif;
 
-    color:#93c5fd;
+    color:#38bdf8;
 
-    line-height:1.7;
+    text-shadow:
+    0 0 15px rgba(56,189,248,0.5);
 }
 
-@media(max-width:500px){
+/* ===== 모바일 ===== */
 
-    .glass-card,
-    .result-card{
+@media(max-width:1000px){
 
-        width:100%;
+    .building{
+
+        flex-direction:column;
+
+        overflow:auto;
     }
 
-    .title-area h1{
+    .shaft{
 
-        font-size:38px;
+        transform:scale(0.8);
+    }
+
+    .control-panel{
+
+        width:100%;
+        max-width:500px;
     }
 }
